@@ -1,50 +1,61 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: Initial → 1.0.0
+- Created new constitution for リアルタイム動機型メモ帳プロジェクト
+- Added sections: Core Principles (5), Technology Stack, Development Process, Governance
+- Templates requiring updates: All templates need validation for alignment
+- Follow-up TODOs: None
+-->
+
+# リアルタイム動機型メモ帳 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. リアルタイム同期
+すべてのメモ操作はリアルタイムで同期される。複数のクライアント間での即座のデータ共有が必須。
+WebSocketまたは同等の技術を使用し、100ms以下のレスポンス時間を維持する。
+競合解決メカニズムを実装し、データの整合性を保証する。
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. 動機駆動型UI
+ユーザーの動機を高める要素を継続的に提供する。進捗可視化、達成感の演出、継続性の促進機能を含む。
+ゲーミフィケーション要素（ポイント、レベル、バッジ）を適切に実装し、過度にならないよう配慮する。
+ユーザーエンゲージメント指標を追跡し、継続的に改善を行う。
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. テストファースト開発 (NON-NEGOTIABLE)
+TDD必須：テスト作成→ユーザー承認→テスト失敗→実装の順序を厳守する。
+Red-Green-Refactorサイクルを厳格に実行し、全機能についてユニット・統合テストを作成する。
+リアルタイム機能については特に、同時接続テストとパフォーマンステストを重視する。
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. データ永続化とプライバシー
+ユーザーデータの安全な永続化と適切なプライバシー保護を実装する。
+暗号化、アクセス制御、データ復旧機能を含む包括的なデータ管理戦略を採用する。
+GDPR等のプライバシー規制に準拠し、ユーザーが自身のデータを完全に制御できる機能を提供する。
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. パフォーマンスとスケーラビリティ
+高いパフォーマンスと将来のスケーラビリティを考慮した設計を採用する。
+メモリ効率、レスポンシブ設計、段階的機能読み込みを実装する。
+同時接続数とデータ量の増加に対応できるアーキテクチャを構築する。
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technology Stack
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+最新のWeb技術スタックを採用し、メンテナンス性と開発効率を重視する。
+フロントエンド：TypeScript、React/Vue.js、TailwindCSS等のモダンフレームワーク
+バックエンド：Node.js、WebSocket対応、データベース（PostgreSQL/MongoDB）
+リアルタイム通信：WebSocket、Socket.IO、またはWebRTC技術
+デプロイ：コンテナ化（Docker）、CI/CDパイプライン、クラウドプラットフォーム対応
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Process
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+アジャイル開発手法を採用し、継続的なフィードバックループを確立する。
+2週間スプリント、毎日のスタンドアップ、スプリントレビューを実施する。
+コードレビューは必須で、最低2名の承認が必要。セキュリティとパフォーマンスの観点を重視する。
+ユーザビリティテストを定期的に実施し、UX改善を継続的に行う。
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+この構成文書はすべての開発実践に優先する。
+修正には文書化、承認、移行計画が必要。
+すべてのPR/レビューでコンプライアンス検証を実施する。
+複雑性は十分に正当化される必要がある。
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-10-29 | **Last Amended**: 2025-10-29
