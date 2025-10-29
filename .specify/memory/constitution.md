@@ -1,9 +1,14 @@
 <!--
 Sync Impact Report:
-- Version change: Initial → 1.0.0
-- Created new constitution for リアルタイム動機型メモ帳プロジェクト
-- Added sections: Core Principles (5), Technology Stack, Development Process, Governance
-- Templates requiring updates: All templates need validation for alignment
+- Version change: 1.0.0 → 1.0.1
+- Modified: Technology Stack section (specified Firebase as primary backend)
+- Added: Firebase services (Firestore, Authentication, Hosting, Functions)
+- Clarified: Real-time synchronization using Firestore
+- Templates requiring updates: 
+  ✅ constitution.md - updated
+  ⚠ plan-template.md - needs validation for Firebase-specific technical context
+  ⚠ spec-template.md - aligned with current stack
+  ⚠ tasks-template.md - aligned with current stack
 - Follow-up TODOs: None
 -->
 
@@ -13,8 +18,8 @@ Sync Impact Report:
 
 ### I. リアルタイム同期
 すべてのメモ操作はリアルタイムで同期される。複数のクライアント間での即座のデータ共有が必須。
-WebSocketまたは同等の技術を使用し、100ms以下のレスポンス時間を維持する。
-競合解決メカニズムを実装し、データの整合性を保証する。
+Firestoreのリアルタイムリスナー機能を活用し、100ms以下のレスポンス時間を維持する。
+Firestoreの組み込みトランザクションと楽観的ロックを使用し、競合解決とデータ整合性を保証する。
 
 ### II. 動機駆動型UI
 ユーザーの動機を高める要素を継続的に提供する。進捗可視化、達成感の演出、継続性の促進機能を含む。
@@ -28,8 +33,9 @@ Red-Green-Refactorサイクルを厳格に実行し、全機能についてユ�
 
 ### IV. データ永続化とプライバシー
 ユーザーデータの安全な永続化と適切なプライバシー保護を実装する。
-暗号化、アクセス制御、データ復旧機能を含む包括的なデータ管理戦略を採用する。
+Firebase Security Rulesを活用した堅牢なアクセス制御、Firebase Authenticationによる認証を実装する。
 GDPR等のプライバシー規制に準拠し、ユーザーが自身のデータを完全に制御できる機能を提供する。
+Firestoreの自動バックアップ機能とデータエクスポート機能を活用してデータ復旧戦略を確立する。
 
 ### V. パフォーマンスとスケーラビリティ
 高いパフォーマンスと将来のスケーラビリティを考慮した設計を採用する。
@@ -39,10 +45,26 @@ GDPR等のプライバシー規制に準拠し、ユーザーが自身のデー�
 ## Technology Stack
 
 最新のWeb技術スタックを採用し、メンテナンス性と開発効率を重視する。
-フロントエンド：TypeScript、React/Vue.js、TailwindCSS等のモダンフレームワーク
-バックエンド：Node.js、WebSocket対応、データベース（PostgreSQL/MongoDB）
-リアルタイム通信：WebSocket、Socket.IO、またはWebRTC技術
-デプロイ：コンテナ化（Docker）、CI/CDパイプライン、クラウドプラットフォーム対応
+
+**フロントエンド**：
+- TypeScript、React/Vue.js、TailwindCSS等のモダンフレームワーク
+- Firebase SDK (v9以降のモジュラー版を使用)
+
+**バックエンド（Firebase）**：
+- **Firestore**: リアルタイムデータベース。ドキュメント指向、自動同期機能を活用
+- **Firebase Authentication**: ユーザー認証（Email/Password、Google、GitHub等）
+- **Cloud Functions for Firebase**: サーバーサイドロジック、バックグラウンド処理
+- **Firebase Hosting**: 静的コンテンツのホスティング
+- **Firebase Storage**: ファイルストレージ（将来的にメモへの添付ファイル対応時）
+
+**開発・デプロイ**：
+- Firebase CLI、Firebase Emulator Suite（ローカル開発）
+- GitHub Actions（CI/CDパイプライン）
+- Firebase Security Rules（アクセス制御）
+
+**理念**: Firebaseのマネージドサービスを活用することで、インフラ管理のオーバーヘッドを最小化し、
+リアルタイム同期機能の実装に集中できる。初期段階では特にFirestoreの組み込みリアルタイム機能と
+Firebase Authenticationを最大限活用し、開発速度を重視する。
 
 ## Development Process
 
@@ -58,4 +80,4 @@ GDPR等のプライバシー規制に準拠し、ユーザーが自身のデー�
 すべてのPR/レビューでコンプライアンス検証を実施する。
 複雑性は十分に正当化される必要がある。
 
-**Version**: 1.0.0 | **Ratified**: 2025-10-29 | **Last Amended**: 2025-10-29
+**Version**: 1.0.1 | **Ratified**: 2025-10-29 | **Last Amended**: 2025-10-29
