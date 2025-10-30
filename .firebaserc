@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "realtime-todo-app"
+  },
+  "targets": {
+    "realtime-todo-app": {
+      "hosting": {
+        "realtime-todo-app": [
+          "frontend"
+        ]
+      }
+    }
+  }
+}

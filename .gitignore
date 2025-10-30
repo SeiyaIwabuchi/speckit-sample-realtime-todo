@@ -1,0 +1,26 @@
+# Node.js/TypeScript/React
+node_modules/
+dist/
+build/
+*.log
+.env*
+.vscode/
+.idea/
+
+# Firebase
+firebase-debug.log
+firestore.indexes.json
+firestore.rules
+
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Test/CI
+coverage/
+frontend/tests/
+
+# Others
+npm-debug.log*
