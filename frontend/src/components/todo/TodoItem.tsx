@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useTags } from '../../hooks/useTags';
+import TagBadge from '../tags/TagBadge';
 import { Todo } from '../../types/todo';
 
 interface TodoItemProps {
@@ -66,11 +68,14 @@ export const TodoItem: React.FC<TodoItemProps> = ({
     setEditDescription(todo.description || '');
   };
 
+  const { tags: allTags } = useTags();
+  const todoTags = allTags.filter(tag => todo.tagIds?.includes(tag.id));
+
   return (
     <div className={`bg-white rounded-lg shadow-sm border p-4 transition-all duration-200 ${
       todo.completed ? 'opacity-75 border-gray-200' : 'border-gray-300 hover:shadow-md'
     }`}>
-      <div className="flex items-start space-x-3">
+      <div className="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-3">
         {/* チェックボックス */}
         <button
           onClick={handleToggle}
@@ -89,7 +94,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         </button>
 
         {/* Todo内容 */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 w-full sm:w-auto">
           {isEditing ? (
             <div className="space-y-2">
               <input
@@ -108,18 +113,18 @@ export const TodoItem: React.FC<TodoItemProps> = ({
                 rows={2}
                 disabled={isUpdating}
               />
-              <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                 <button
                   onClick={handleSave}
                   disabled={isUpdating || !editTitle.trim()}
-                  className="px-3 py-1 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 py-1 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                 >
                   {isUpdating ? '保存中...' : '保存'}
                 </button>
                 <button
                   onClick={handleCancel}
                   disabled={isUpdating}
-                  className="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                 >
                   キャンセル
                 </button>
@@ -139,10 +144,18 @@ export const TodoItem: React.FC<TodoItemProps> = ({
                   {todo.description}
                 </p>
               )}
-              <div className="mt-2 text-xs text-gray-500">
-                作成日: {todo.createdAt.toLocaleDateString('ja-JP')}
+              {/* タグ表示欄 */}
+              {todoTags.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1 sm:gap-2">
+                  {todoTags.map(tag => (
+                    <TagBadge key={tag.id} name={tag.name} color={tag.color} />
+                  ))}
+                </div>
+              )}
+              <div className="mt-2 text-xs text-gray-500 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <span>作成日: {todo.createdAt.toLocaleDateString('ja-JP')}</span>
                 {todo.updatedAt.getTime() !== todo.createdAt.getTime() && (
-                  <span className="ml-2">
+                  <span>
                     更新日: {todo.updatedAt.toLocaleDateString('ja-JP')}
                   </span>
                 )}
@@ -153,7 +166,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 
         {/* アクションボタン */}
         {!isEditing && (
-          <div className="flex-shrink-0 flex space-x-1">
+          <div className="flex-shrink-0 flex flex-row sm:flex-col space-x-1 sm:space-x-0 sm:space-y-1 justify-center sm:justify-start">
             <button
               onClick={handleEdit}
               className="p-1 text-gray-400 hover:text-indigo-600 transition-colors duration-200"

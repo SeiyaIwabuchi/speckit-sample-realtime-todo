@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toast } from '../ui/Toast';
 import { Header } from './Header';
 
 interface MainLayoutProps {
@@ -19,6 +20,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, headerContent 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         {children}
       </main>
+      {/* Toast通知 */}
+      <Toast />
     </div>
   );
 };

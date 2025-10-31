@@ -1,17 +1,19 @@
-export const COLOR_PALETTE = {
-  RED: '#EF4444',
-  ORANGE: '#F97316',
-  YELLOW: '#EAB308',
-  GREEN: '#22C55E',
-  TEAL: '#14B8A6',
-  BLUE: '#3B82F6',
-  INDIGO: '#6366F1',
-  PURPLE: '#A855F7',
-  PINK: '#EC4899',
-  GRAY: '#6B7280'
-} as const;
 
-export type TagColor = typeof COLOR_PALETTE[keyof typeof COLOR_PALETTE];
+// タグ用カラーパレット（10色）
+export const COLOR_PALETTE = [
+  '#EF4444', // 赤
+  '#F97316', // オレンジ
+  '#EAB308', // 黄
+  '#22C55E', // 緑
+  '#14B8A6', // ティール
+  '#3B82F6', // 青
+  '#6366F1', // インディゴ
+  '#A855F7', // 紫
+  '#EC4899', // ピンク
+  '#6B7280', // グレー
+];
+
+export type TagColor = string;
 
 export interface Tag {
   id: string;

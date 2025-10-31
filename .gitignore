@@ -8,9 +8,14 @@ build/
 .idea/
 
 # Firebase
+.firebase/
 firebase-debug.log
 firestore.indexes.json
 firestore.rules
+
+# Development Tools
+.serena/
+.specify/
 
 # Universal
 .DS_Store
@@ -20,7 +25,11 @@ Thumbs.db
 
 # Test/CI
 coverage/
-frontend/tests/
+
+# Root level files (should be in frontend/)
+package.json
+package-lock.json
 
 # Others
 npm-debug.log*
+node_modules
