@@ -155,20 +155,20 @@ describe('TagSelector', () => {
 
     render(
       <TagSelector
-        selectedTagIds={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']}
+        selectedTagIds={['1', '2']} // Select 2 out of 3 available tags
         onSelectionChange={mockOnSelectionChange}
-        maxSelection={20}
+        maxSelection={2} // Set max to 2 for this test
       />
     );
 
     // Try to select another tag when at max
-    const workCheckbox = screen.getByLabelText('Work');
-    fireEvent.click(workCheckbox);
+    const urgentCheckbox = screen.getByLabelText('Urgent');
+    fireEvent.click(urgentCheckbox);
 
     // Should not call onSelectionChange since at max
     expect(mockOnSelectionChange).not.toHaveBeenCalled();
 
-    expect(screen.getByText('最大 20 個まで選択できます')).toBeInTheDocument();
+    expect(screen.getByText('最大 2 個まで選択できます')).toBeInTheDocument();
   });
 
   it('disables checkboxes when disabled prop is true', () => {

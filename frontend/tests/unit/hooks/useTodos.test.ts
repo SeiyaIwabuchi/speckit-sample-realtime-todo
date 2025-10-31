@@ -100,7 +100,9 @@ describe('useTodos', () => {
     vi.mocked(TodoService.createTodo).mockRejectedValue(error);
     vi.mocked(toastService.error).mockImplementation(() => {});
     const { result } = renderHook(() => useTodos());
-    await expect(result.current.createTodo({ title: 'Test', description: 'Desc' })).rejects.toThrow('Test error');
+    await act(async () => {
+      await expect(result.current.createTodo({ title: 'Test', description: 'Desc' })).rejects.toThrow('Test error');
+    });
     expect(toastService.error).toHaveBeenCalled();
   });
 
