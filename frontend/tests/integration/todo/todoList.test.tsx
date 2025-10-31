@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { TodoPage } from '../../../src/pages/TodoPage';
+import { MemoryRouter } from 'react-router-dom';
+import TodoPage from '../../../src/pages/TodoPage';
 import { Todo } from '../../../src/types/todo';
 import { useTodos } from '../../../src/hooks/useTodos';
 
@@ -12,10 +13,18 @@ vi.mock('firebase/auth', () => ({
     callback({
       uid: 'user123',
       email: 'test@example.com',
+      displayName: 'Test User',
+      photoURL: null,
+      metadata: {
+        creationTime: '2025-01-01T00:00:00.000Z',
+        lastSignInTime: '2025-01-01T00:00:00.000Z',
+      },
     });
     return vi.fn(); // unsubscribe function
   }),
-  GoogleAuthProvider: vi.fn(),
+  GoogleAuthProvider: class {
+    setCustomParameters = vi.fn();
+  },
   signInWithPopup: vi.fn(),
   signOut: vi.fn(),
   createUserWithEmailAndPassword: vi.fn(),
@@ -30,6 +39,21 @@ vi.mock('../../../src/components/layout/MainLayout', () => ({
 // useTodosのモック
 vi.mock('../../../src/hooks/useTodos', () => ({
   useTodos: vi.fn(),
+}));
+
+// CreateTodoModalのモック
+vi.mock('../../../src/components/todo/CreateTodoModal', () => ({
+  default: vi.fn(),
+}));
+
+// tagServiceのモック
+vi.mock('../../../src/services/tagService', () => ({
+  tagService: {
+    subscribeTags: vi.fn(() => vi.fn()), // Return unsubscribe function
+    createTag: vi.fn(),
+    updateTag: vi.fn(),
+    deleteTag: vi.fn(),
+  },
 }));
 
 describe('TodoList Integration', () => {
@@ -86,7 +110,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     await waitFor(() => {
@@ -112,7 +136,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     await waitFor(() => {
@@ -138,7 +162,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     await waitFor(() => {
@@ -162,7 +186,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     await waitFor(() => {
@@ -184,7 +208,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     await waitFor(() => {
@@ -213,7 +237,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert - ローディング状態が表示される
     expect(screen.getByText('Todo管理')).toBeInTheDocument();
@@ -233,7 +257,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     expect(screen.getByText('Failed to load todos')).toBeInTheDocument();
@@ -262,7 +286,7 @@ describe('TodoList Integration', () => {
       refreshTodos: vi.fn(),
     });
 
-    render(<TodoPage />);
+    render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
     // Assert
     await waitFor(() => {
@@ -286,7 +310,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act
       await waitFor(() => {
@@ -315,7 +339,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 編集モードに入る
       await waitFor(() => {
@@ -356,7 +380,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 編集モードに入る
       await waitFor(() => {
@@ -391,7 +415,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 編集モードに入る
       await waitFor(() => {
@@ -425,7 +449,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 編集モードに入る
       await waitFor(() => {
@@ -465,7 +489,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 編集モードに入る
       await waitFor(() => {
@@ -516,7 +540,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 編集モードに入る
       await waitFor(() => {
@@ -556,7 +580,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // 初期状態を確認
       await waitFor(() => {
@@ -603,7 +627,7 @@ describe('TodoList Integration', () => {
         refreshTodos: vi.fn(),
       });
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Assert
       await waitFor(() => {
@@ -629,7 +653,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act
       await waitFor(() => {
@@ -662,7 +686,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック（キャンセル）
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(false);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act
       await waitFor(() => {
@@ -696,7 +720,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act
       await waitFor(() => {
@@ -731,7 +755,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act
       await waitFor(() => {
@@ -767,7 +791,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // 初期状態を確認（総数: 2, 完了: 1, 未完了: 1）
       await waitFor(() => {
@@ -806,7 +830,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act
       await waitFor(() => {
@@ -840,7 +864,7 @@ describe('TodoList Integration', () => {
       // window.confirmをモック（常に確認）
       const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
-      render(<TodoPage />);
+      render(<MemoryRouter><TodoPage /></MemoryRouter>);
 
       // Act - 最初のTodoを削除
       const deleteButtons = screen.getAllByLabelText('削除');
