@@ -2,8 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { Todo, CreateTodoData, UpdateTodoData } from '../types/todo';
 import { TodoService } from '../services/todoService';
 import { useAuthContext } from '../contexts/AuthContext';
+import { analyticsService } from '../services/analyticsService';
 import { toastService } from '../services/toastService';
 import { handleError } from '../utils/errorHandling';
+
+export interface UseTodosOptions {
+  tagIds?: string[];
+}
 
 export interface UseTodosReturn {
   todos: Todo[];
@@ -16,7 +21,8 @@ export interface UseTodosReturn {
   refreshTodos: () => void;
 }
 
-export const useTodos = (): UseTodosReturn => {
+export const useTodos = (options: UseTodosOptions = {}): UseTodosReturn => {
+  const { tagIds = [] } = options;
   const { user } = useAuthContext();
   const [todos, setTodos] = useState<Todo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,13 +39,18 @@ export const useTodos = (): UseTodosReturn => {
     setLoading(true);
     setError(null);
 
-    const unsubscribe = TodoService.subscribeToTodos(user.id, (fetchedTodos) => {
-      setTodos(fetchedTodos);
-      setLoading(false);
-    });
+    const unsubscribe = tagIds.length > 0
+      ? TodoService.subscribeToFilteredTodos(user.id, tagIds, (fetchedTodos) => {
+          setTodos(fetchedTodos);
+          setLoading(false);
+        })
+      : TodoService.subscribeToTodos(user.id, (fetchedTodos) => {
+          setTodos(fetchedTodos);
+          setLoading(false);
+        });
 
     return unsubscribe;
-  }, [user]);
+  }, [user, tagIds]);
 
   // Todo作成
   const createTodo = useCallback(async (data: CreateTodoData) => {
@@ -50,6 +61,7 @@ export const useTodos = (): UseTodosReturn => {
     try {
       setError(null);
       await TodoService.createTodo(user.id, data);
+      await analyticsService.trackTodoCreated(data.tagIds && data.tagIds.length > 0);
       toastService.success('Todoが作成されました');
     } catch (err) {
       const errorMessage = handleError(err);
@@ -64,6 +76,7 @@ export const useTodos = (): UseTodosReturn => {
     try {
       setError(null);
       await TodoService.updateTodo(id, data);
+      await analyticsService.trackTodoUpdated(data.tagIds && data.tagIds.length > 0);
       toastService.success('Todoが更新されました');
     } catch (err) {
       const errorMessage = handleError(err);
@@ -78,6 +91,7 @@ export const useTodos = (): UseTodosReturn => {
     try {
       setError(null);
       await TodoService.deleteTodo(id);
+      await analyticsService.trackTodoDeleted();
       toastService.success('Todoが削除されました');
     } catch (err) {
       const errorMessage = handleError(err);
@@ -92,6 +106,11 @@ export const useTodos = (): UseTodosReturn => {
     try {
       setError(null);
       await TodoService.toggleTodo(id, completed);
+      if (completed) {
+        // 完了したTodoのタグ情報を取得
+        const todo = todos.find(t => t.id === id);
+        await analyticsService.trackTodoCompleted(todo?.tagIds && todo.tagIds.length > 0);
+      }
       const message = completed ? 'Todoが完了しました' : 'Todoが未完了に戻りました';
       toastService.success(message);
     } catch (err) {
@@ -100,7 +119,7 @@ export const useTodos = (): UseTodosReturn => {
       toastService.error(errorMessage);
       throw err;
     }
-  }, []);
+  }, [todos]);
 
   // Todo一覧をリフレッシュ（手動更新用）
   const refreshTodos = useCallback(() => {

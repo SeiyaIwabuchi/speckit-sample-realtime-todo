@@ -119,6 +119,60 @@ export class TodoService {
   }
 
   /**
+   * フィルタリングされたTodo一覧をリアルタイムで監視
+   */
+  static subscribeToFilteredTodos(
+    userId: string,
+    tagIds: string[],
+    callback: (todos: Todo[]) => void
+  ): () => void {
+    try {
+      let q;
+
+      if (tagIds.length === 0) {
+        // タグフィルタなしの場合は通常のクエリ
+        q = query(
+          collection(db, this.COLLECTION_NAME),
+          where('userId', '==', userId),
+          orderBy('createdAt', 'desc')
+        );
+      } else {
+        // タグフィルタありの場合は array-contains-any を使用
+        q = query(
+          collection(db, this.COLLECTION_NAME),
+          where('userId', '==', userId),
+          where('tagIds', 'array-contains-any', tagIds),
+          orderBy('createdAt', 'desc')
+        );
+      }
+
+      return onSnapshot(q, (querySnapshot) => {
+        const todos: Todo[] = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          todos.push({
+            id: doc.id,
+            title: data.title,
+            description: data.description,
+            completed: data.completed,
+            tagIds: data.tagIds || [],
+            createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt || new Date(),
+            updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt || new Date(),
+            userId: data.userId,
+          } as Todo);
+        });
+        callback(todos);
+      }, (error) => {
+        console.error('Error subscribing to filtered todos:', error);
+        throw new Error('フィルタリングされたTodo一覧の取得に失敗しました');
+      });
+    } catch (error) {
+      console.error('Error setting up filtered todo subscription:', error);
+      throw new Error('フィルタリングされたTodo一覧の監視設定に失敗しました');
+    }
+  }
+
+  /**
    * Todoを完了/未完了に切り替え
    */
   static async toggleTodo(todoId: string, completed: boolean): Promise<void> {

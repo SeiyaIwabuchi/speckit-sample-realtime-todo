@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { User } from '../types/user';
 import { authService } from '../services/authService';
+import { analyticsService } from '../services/analyticsService';
 import { handleAuthError } from '../utils/errorHandling';
 import { toastService } from '../services/toastService';
 
@@ -18,10 +19,18 @@ export const useAuth = (): UseAuthReturn => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = authService.onAuthStateChanged((authUser) => {
+    const unsubscribe = authService.onAuthStateChanged(async (authUser) => {
       console.log('Auth state changed:', authUser ? 'User logged in' : 'User logged out', authUser);
       setUser(authUser);
       setLoading(false);
+
+      // Set user for analytics tracking
+      if (authUser) {
+        await analyticsService.setUser(authUser.id, {
+          email: authUser.email,
+          signup_date: authUser.createdAt.toISOString()
+        });
+      }
     });
 
     return unsubscribe;

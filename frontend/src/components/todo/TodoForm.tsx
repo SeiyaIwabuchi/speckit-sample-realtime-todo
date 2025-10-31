@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TagSelector } from '../todos/TagSelector';
 import { CreateTodoData } from '../../types/todo';
 
 interface TodoFormProps {
@@ -9,6 +10,7 @@ interface TodoFormProps {
 export const TodoForm: React.FC<TodoFormProps> = ({ onSubmit, loading = false }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [tagIds, setTagIds] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,11 +25,13 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onSubmit, loading = false })
       await onSubmit({
         title: title.trim(),
         description: description.trim() || undefined,
+        tagIds: tagIds.length > 0 ? tagIds : undefined,
       });
 
       // フォームをリセット
       setTitle('');
       setDescription('');
+      setTagIds([]);
     } catch (error) {
       // エラーメッセージを表示
       setError(error instanceof Error ? error.message : 'Todoの作成に失敗しました');
@@ -39,8 +43,8 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onSubmit, loading = false })
   const isDisabled = loading || isSubmitting || !title.trim();
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-300 p-6">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">新しいTodoを作成</h2>
+    <div className="bg-white rounded-lg shadow-sm border border-gray-300 p-4 sm:p-6">
+      <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">新しいTodoを作成</h2>
 
       {error && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
@@ -80,11 +84,21 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onSubmit, loading = false })
           />
         </div>
 
-        <div className="flex justify-end">
+        {/* タグ選択欄 */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">タグ <span className="text-gray-500">(最大20個)</span></label>
+          <TagSelector
+            selectedTagIds={tagIds}
+            onSelectionChange={setTagIds}
+            disabled={isSubmitting}
+          />
+        </div>
+
+        <div className="flex flex-col sm:flex-row justify-end items-stretch gap-2">
           <button
             type="submit"
             disabled={isDisabled}
-            className="px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+            className="px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 w-full sm:w-auto"
           >
             {isSubmitting ? (
               <span className="flex items-center">

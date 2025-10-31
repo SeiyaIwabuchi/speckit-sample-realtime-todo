@@ -8,6 +8,7 @@ import {
   User as FirebaseUser
 } from 'firebase/auth';
 import { auth } from './firebase';
+import { analyticsService } from './analyticsService';
 import { User } from '../types/user';
 
 export interface AuthService {
@@ -32,7 +33,9 @@ class FirebaseAuthService implements AuthService {
   async signUpWithEmail(email: string, password: string): Promise<User> {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
-      return this.mapFirebaseUserToUser(result.user);
+      const user = this.mapFirebaseUserToUser(result.user);
+      await analyticsService.trackSignup('email');
+      return user;
     } catch (error) {
       throw error;
     }
@@ -41,7 +44,9 @@ class FirebaseAuthService implements AuthService {
   async signInWithEmail(email: string, password: string): Promise<User> {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      return this.mapFirebaseUserToUser(result.user);
+      const user = this.mapFirebaseUserToUser(result.user);
+      await analyticsService.trackLogin('email');
+      return user;
     } catch (error) {
       throw error;
     }
@@ -50,7 +55,9 @@ class FirebaseAuthService implements AuthService {
   async signInWithGoogle(): Promise<User> {
     try {
       const result = await signInWithPopup(auth, this.googleProvider);
-      return this.mapFirebaseUserToUser(result.user);
+      const user = this.mapFirebaseUserToUser(result.user);
+      await analyticsService.trackLogin('google');
+      return user;
     } catch (error) {
       throw error;
     }
@@ -59,6 +66,7 @@ class FirebaseAuthService implements AuthService {
   async signOut(): Promise<void> {
     try {
       await firebaseSignOut(auth);
+      await analyticsService.trackLogout();
     } catch (error) {
       throw error;
     }

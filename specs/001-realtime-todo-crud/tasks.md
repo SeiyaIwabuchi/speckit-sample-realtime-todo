@@ -24,28 +24,30 @@
 
 ---
 
+
 ## Phase 1: Setup (Shared Infrastructure)
 
 **Purpose**: Project initialization and Firebase configuration
 
-- [ ] T001 Create project directory structure (frontend/src with subdirectories per plan.md)
-- [ ] T002 Initialize Node.js project with package.json and install core dependencies (React 18, TypeScript 5.x, Vite)
-- [ ] T003 [P] Install Firebase SDK v9+ (firebase@10)
-- [ ] T004 [P] Install UI dependencies (tailwindcss@3, @headlessui/react, @heroicons/react)
-- [ ] T005 [P] Install testing dependencies (vitest, @testing-library/react, @testing-library/jest-dom)
-- [ ] T006 [P] Configure TypeScript (frontend/tsconfig.json with strict mode, path aliases)
-- [ ] T007 [P] Configure Vite (frontend/vite.config.ts with React plugin, test setup)
-- [ ] T008 [P] Configure TailwindCSS (frontend/tailwind.config.js with preset tag colors)
-- [ ] T009 [P] Configure ESLint and Prettier (frontend/.eslintrc.js, frontend/.prettierrc)
-- [ ] T010 Setup Firebase project via Firebase Console (Authentication, Firestore)
-- [ ] T011 Create Firebase configuration file (frontend/src/services/firebase.ts with environment variables)
-- [ ] T012 Create .env.local file with Firebase credentials (frontend/.env.local)
-- [ ] T013 [P] Initialize Firebase CLI and configure firebase.json
-- [ ] T014 [P] Create Firestore Security Rules file (firestore.rules with validation functions)
-- [ ] T015 [P] Create Firestore indexes configuration (firestore.indexes.json with composite indexes)
-- [ ] T016 Deploy Firestore Security Rules and indexes to Firebase
+- [x] T001 Create project directory structure (frontend/src with subdirectories per plan.md)
+- [x] T002 Initialize Node.js project with package.json and install core dependencies (React 18, TypeScript 5.x, Vite)
+- [x] T003 [P] Install Firebase SDK v9+ (firebase@10)
+- [x] T004 [P] Install UI dependencies (tailwindcss@3, @headlessui/react, @heroicons/react)
+- [x] T005 [P] Install testing dependencies (vitest, @testing-library/react, @testing-library/jest-dom)
+- [x] T006 [P] Configure TypeScript (frontend/tsconfig.json with strict mode, path aliases)
+- [x] T007 [P] Configure Vite (frontend/vite.config.ts with React plugin, test setup)
+- [x] T008 [P] Configure TailwindCSS (frontend/tailwind.config.js with preset tag colors)
+- [x] T009 [P] Configure ESLint and Prettier (frontend/.eslintrc.js, frontend/.prettierrc)
+- [x] T010 Setup Firebase project via Firebase Console (Authentication, Firestore)
+- [x] T011 Create Firebase configuration file (frontend/src/services/firebase.ts with environment variables)
+- [x] T012 Create .env.local file with Firebase credentials (frontend/.env.local)
+- [x] T013 [P] Initialize Firebase CLI and configure firebase.json
+- [x] T014 [P] Create Firestore Security Rules file (firestore.rules with validation functions)
+- [x] T015 [P] Create Firestore indexes configuration (firestore.indexes.json with composite indexes)
+- [x] T016 Deploy Firestore Security Rules and indexes to Firebase
 
 ---
+
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
@@ -53,30 +55,30 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T017 [P] Define TypeScript types for User (frontend/src/types/user.ts)
-- [ ] T018 [P] Define TypeScript types for Todo (frontend/src/types/todo.ts with title, description, tagIds, timestamps)
-- [ ] T019 [P] Define TypeScript types for Tag (frontend/src/types/tag.ts with name, color, timestamps)
-- [ ] T020 [P] Create validation utilities (frontend/src/utils/validation.ts with validateTodoInput, validateTagInput)
-- [ ] T021 [P] Create error handling utilities (frontend/src/utils/errorHandling.ts with handleAuthError, handleServiceError, withRetry)
-- [ ] T022 Create AuthService interface and implementation (frontend/src/services/authService.ts with 6 methods)
-- [ ] T023 Write tests for AuthService (frontend/tests/unit/services/authService.test.ts)
-- [ ] T024 Implement AuthService methods (signUpWithEmail, signInWithEmail, signInWithGoogle, signOut, getCurrentUser, onAuthStateChanged)
-- [ ] T025 Create useAuth hook (frontend/src/hooks/useAuth.ts with authentication state management)
-- [ ] T026 Write tests for useAuth hook (frontend/tests/unit/hooks/useAuth.test.ts)
-- [ ] T027 Implement useAuth hook with AuthService integration
-- [ ] T028 Create AuthContext for global auth state (frontend/src/contexts/AuthContext.tsx)
-- [ ] T029 [P] Create toast notification service interface (frontend/src/services/toastService.ts with success, error, warning, info)
-- [ ] T030 [P] Implement toast notification component (frontend/src/components/ui/Toast.tsx with TailwindCSS)
-- [ ] T031 [P] Create layout components (frontend/src/components/layout/Header.tsx, frontend/src/components/layout/MainLayout.tsx)
-- [ ] T032 Create login page (frontend/src/pages/LoginPage.tsx with email/password and Google sign-in)
-- [ ] T033 Write tests for LoginPage (frontend/tests/integration/pages/LoginPage.test.tsx)
-- [ ] T034 Implement LoginPage with form validation and error handling
-- [ ] T035 Create signup page (frontend/src/pages/SignupPage.tsx)
-- [ ] T036 Write tests for SignupPage (frontend/tests/integration/pages/SignupPage.test.tsx)
-- [ ] T037 Implement SignupPage with email/password registration
-- [ ] T038 Setup React Router with protected routes (frontend/src/App.tsx with authentication guards)
-- [ ] T039 Configure Firebase Emulator Suite (firebase.json with Firestore and Auth emulators)
-- [ ] T040 Setup test environment with Firebase emulators (frontend/tests/setup.ts)
+- [x] T017 [P] Define TypeScript types for User (frontend/src/types/user.ts)
+- [x] T018 [P] Define TypeScript types for Todo (frontend/src/types/todo.ts with title, description, tagIds, timestamps)
+- [x] T019 [P] Define TypeScript types for Tag (frontend/src/types/tag.ts with name, color, timestamps)
+- [x] T020 [P] Create validation utilities (frontend/src/utils/validation.ts with validateTodoInput, validateTagInput)
+- [x] T021 [P] Create error handling utilities (frontend/src/utils/errorHandling.ts with handleAuthError, handleServiceError, withRetry)
+- [x] T022 Create AuthService interface and implementation (frontend/src/services/authservice.ts with 6 methods)
+- [x] T023 Write tests for AuthService (frontend/tests/unit/services/authService.test.ts)
+- [x] T024 Implement AuthService methods (signUpWithEmail, signInWithEmail, signInWithGoogle, signOut, getCurrentUser, onAuthStateChanged)
+- [x] T025 Create useAuth hook (frontend/src/hooks/useAuth.ts with authentication state management)
+- [x] T026 Write tests for useAuth hook (frontend/tests/unit/hooks/useAuth.test.ts)
+- [x] T027 Implement useAuth hook with AuthService integration
+- [x] T028 Create AuthContext for global auth state (frontend/src/contexts/AuthContext.tsx)
+- [x] T029 [P] Create toast notification service interface (frontend/src/services/toastService.ts with success, error, warning, info)
+- [x] T030 [P] Implement toast notification component (frontend/src/components/ui/Toast.tsx with TailwindCSS)
+- [x] T031 [P] Create layout components (frontend/src/components/layout/Header.tsx, frontend/src/components/layout/MainLayout.tsx)
+- [x] T032 Create login page (frontend/src/pages/LoginPage.tsx with email/password and Google sign-in)
+- [x] T033 Write tests for LoginPage (frontend/tests/integration/pages/LoginPage.test.tsx)
+- [x] T034 Implement LoginPage with form validation and error handling
+- [x] T035 Create signup page (frontend/src/pages/SignupPage.tsx)
+- [x] T036 Write tests for SignupPage (frontend/tests/integration/pages/SignupPage.test.tsx)
+- [x] T037 Implement SignupPage with email/password registration
+- [x] T038 Setup React Router with protected routes (frontend/src/App.tsx with authentication guards)
+- [x] T039 Configure Firebase Emulator Suite (firebase.json with Firestore and Auth emulators)
+- [x] T040 Setup test environment with Firebase emulators (frontend/tests/setup.ts)
 
 **Checkpoint**: Foundation ready - authentication works, user story implementation can now begin
 
@@ -94,40 +96,41 @@
 - FR-014: 作成日時降順で表示
 - FR-017: 空状態メッセージ表示
 
+
 ### Tests for User Story 1 (TDD - Write First)
 
-- [ ] T041 [P] [US1] Write contract tests for TodoService.createTodo in frontend/tests/unit/services/todoService.test.ts
-- [ ] T042 [P] [US1] Write contract tests for TodoService.subscribeTodos in frontend/tests/unit/services/todoService.test.ts
-- [ ] T043 [P] [US1] Write integration tests for Todo creation flow in frontend/tests/integration/todo/createTodo.test.tsx
-- [ ] T044 [P] [US1] Write integration tests for Todo list display in frontend/tests/integration/todo/todoList.test.tsx
-- [ ] T045 [P] [US1] Verify all tests FAIL before implementation
+- [x] T041 [P] [US1] Write contract tests for TodoService.createTodo in frontend/tests/unit/services/todoService.test.ts
+- [x] T042 [P] [US1] Write contract tests for TodoService.subscribeTodos in frontend/tests/unit/services/todoService.test.ts
+- [x] T043 [P] [US1] Write integration tests for Todo creation flow in frontend/tests/integration/todo/createTodo.test.tsx
+- [x] T044 [P] [US1] Write integration tests for Todo list display in frontend/tests/integration/todo/todoList.test.tsx
+- [x] T045 [P] [US1] Verify all tests FAIL before implementation
 
 ### Implementation for User Story 1
 
-- [ ] T046 Create TodoService interface and skeleton (frontend/src/services/todoService.ts with createTodo, subscribeTodos methods)
-- [ ] T047 Implement TodoService.createTodo with Firestore addDoc and retry logic (frontend/src/services/todoService.ts)
-- [ ] T048 Implement TodoService.subscribeTodos with Firestore onSnapshot (frontend/src/services/todoService.ts)
-- [ ] T049 Run tests to verify TodoService.createTodo passes (T041)
-- [ ] T050 Run tests to verify TodoService.subscribeTodos passes (T042)
-- [ ] T051 Create useTodos hook (frontend/src/hooks/useTodos.ts with real-time subscription)
-- [ ] T052 Write tests for useTodos hook (frontend/tests/unit/hooks/useTodos.test.ts)
-- [ ] T053 Implement useTodos hook with TodoService integration and auto-unsubscribe
-- [ ] T054 [P] Create TodoListItem component (frontend/src/components/todos/TodoListItem.tsx)
-- [ ] T055 [P] Write tests for TodoListItem component (frontend/tests/unit/components/todos/TodoListItem.test.tsx)
-- [ ] T056 [P] Create EmptyState component (frontend/src/components/ui/EmptyState.tsx with message and action button)
-- [ ] T057 Create TodoList component (frontend/src/components/todos/TodoList.tsx with sorting by createdAt desc)
-- [ ] T058 Write tests for TodoList component (frontend/tests/unit/components/todos/TodoList.test.tsx)
-- [ ] T059 Implement TodoList component with useTodos hook and EmptyState
-- [ ] T060 Create CreateTodoForm component (frontend/src/components/todos/CreateTodoForm.tsx with title and description inputs)
-- [ ] T061 Write tests for CreateTodoForm component (frontend/tests/unit/components/todos/CreateTodoForm.test.tsx)
-- [ ] T062 Implement CreateTodoForm with validation (1-100 chars title, 0-1000 chars description)
-- [ ] T063 Create CreateTodoModal component (frontend/src/components/todos/CreateTodoModal.tsx with Headless UI Dialog)
-- [ ] T064 Create TodoListPage (frontend/src/pages/TodoListPage.tsx with TodoList and CreateTodoModal)
-- [ ] T065 Write tests for TodoListPage (frontend/tests/integration/pages/TodoListPage.test.tsx)
-- [ ] T066 Implement TodoListPage with authentication check and loading states
-- [ ] T067 Add TodoListPage route to React Router (frontend/src/App.tsx)
-- [ ] T068 Run all User Story 1 integration tests (T043, T044)
-- [ ] T069 Verify tests pass and Todo creation/display works end-to-end
+- [x] T046 Create TodoService interface and skeleton (frontend/src/services/todoService.ts with createTodo, subscribeTodos methods)
+- [x] T047 Implement TodoService.createTodo with Firestore addDoc and retry logic (frontend/src/services/todoService.ts)
+- [x] T048 Implement TodoService.subscribeTodos with Firestore onSnapshot (frontend/src/services/todoService.ts)
+- [x] T049 Run tests to verify TodoService.createTodo passes (T041)
+- [x] T050 Run tests to verify TodoService.subscribeTodos passes (T042)
+- [x] T051 Create useTodos hook (frontend/src/hooks/useTodos.ts with real-time subscription)
+- [x] T052 Write tests for useTodos hook (frontend/tests/unit/hooks/useTodos.test.ts)
+- [x] T053 Implement useTodos hook with TodoService integration and auto-unsubscribe
+- [x] T054 [P] Create TodoListItem component (frontend/src/components/todos/TodoListItem.tsx)
+- [x] T055 [P] Write tests for TodoListItem component (frontend/tests/unit/components/todos/TodoListItem.test.tsx)
+- [x] T056 [P] Create EmptyState component (frontend/src/components/ui/EmptyState.tsx with message and action button)
+- [x] T057 Create TodoList component (frontend/src/components/todos/TodoList.tsx with sorting by createdAt desc)
+- [x] T058 Write tests for TodoList component (frontend/tests/unit/components/todos/TodoList.test.tsx)
+- [x] T059 Implement TodoList component with useTodos hook and EmptyState
+- [x] T060 Create CreateTodoForm component (frontend/src/components/todos/CreateTodoForm.tsx with title and description inputs)
+- [x] T061 Write tests for CreateTodoForm component (frontend/tests/unit/components/todos/CreateTodoForm.test.tsx)
+- [x] T062 Implement CreateTodoForm with validation (1-100 chars title, 0-1000 chars description)
+- [x] T063 Create CreateTodoModal component (frontend/src/components/todos/CreateTodoModal.tsx with Headless UI Dialog)
+- [x] T064 Create TodoListPage (frontend/src/pages/TodoListPage.tsx with TodoList and CreateTodoModal)
+- [x] T065 Write tests for TodoListPage (frontend/tests/integration/pages/TodoListPage.test.tsx)
+- [x] T066 Implement TodoListPage with authentication check and loading states
+- [x] T067 Add TodoListPage route to React Router (frontend/src/App.tsx)
+- [x] T068 Run all User Story 1 integration tests (T043, T044)
+- [x] T069 Verify tests pass and Todo creation/display works end-to-end
 
 **Checkpoint**: User Story 1 complete - Users can create and view Todos with real-time updates
 
@@ -145,38 +148,41 @@
 - FR-005: 削除確認ダイアログ表示
 - FR-016: エラー時にトースト通知と3回リトライ
 
+
 ### Tests for User Story 2 (TDD - Write First)
 
-- [ ] T070 [P] [US2] Write contract tests for TodoService.updateTodo in frontend/tests/unit/services/todoService.test.ts
-- [ ] T071 [P] [US2] Write contract tests for TodoService.deleteTodo in frontend/tests/unit/services/todoService.test.ts
-- [ ] T072 [P] [US2] Write integration tests for Todo editing flow in frontend/tests/integration/todo/editTodo.test.tsx
-- [ ] T073 [P] [US2] Write integration tests for Todo deletion flow in frontend/tests/integration/todo/deleteTodo.test.tsx
-- [ ] T074 [P] [US2] Verify all tests FAIL before implementation
+- [x] T070 [P] [US2] Write contract tests for TodoService.updateTodo in frontend/tests/unit/services/todoService.test.ts
+- [x] T071 [P] [US2] Write contract tests for TodoService.deleteTodo in frontend/tests/unit/services/todoService.test.ts
+- [x] T072 [P] [US2] Write integration tests for Todo editing flow in frontend/tests/integration/todo/editTodo.test.tsx
+- [x] T073 [P] [US2] Write integration tests for Todo deletion flow in frontend/tests/integration/todo/deleteTodo.test.tsx
+- [x] T074 [P] [US2] Verify all tests FAIL before implementation
+
 
 ### Implementation for User Story 2
 
-- [ ] T075 Implement TodoService.updateTodo with Firestore updateDoc and retry logic (frontend/src/services/todoService.ts)
-- [ ] T076 Implement TodoService.deleteTodo with Firestore deleteDoc and retry logic (frontend/src/services/todoService.ts)
-- [ ] T077 Run tests to verify TodoService.updateTodo passes (T070)
-- [ ] T078 Run tests to verify TodoService.deleteTodo passes (T071)
-- [ ] T079 Add updateTodo and deleteTodo methods to useTodos hook (frontend/src/hooks/useTodos.ts)
-- [ ] T080 Write tests for new useTodos methods (frontend/tests/unit/hooks/useTodos.test.ts)
-- [ ] T081 Implement useTodos update/delete with error handling and toast notifications
-- [ ] T082 [P] Create EditTodoForm component (frontend/src/components/todos/EditTodoForm.tsx)
-- [ ] T083 [P] Write tests for EditTodoForm component (frontend/tests/unit/components/todos/EditTodoForm.test.tsx)
-- [ ] T084 [P] Create EditTodoModal component (frontend/src/components/todos/EditTodoModal.tsx with Headless UI Dialog)
-- [ ] T085 [P] Create ConfirmDialog component (frontend/src/components/ui/ConfirmDialog.tsx with Headless UI Dialog)
-- [ ] T086 [P] Write tests for ConfirmDialog component (frontend/tests/unit/components/ui/ConfirmDialog.test.tsx)
-- [ ] T087 Add edit button to TodoListItem component (frontend/src/components/todos/TodoListItem.tsx)
-- [ ] T088 Add delete button to TodoListItem component with confirmation (frontend/src/components/todos/TodoListItem.tsx)
-- [ ] T089 Update TodoListItem tests for edit/delete buttons (frontend/tests/unit/components/todos/TodoListItem.test.tsx)
-- [ ] T090 Integrate EditTodoModal and ConfirmDialog into TodoListPage (frontend/src/pages/TodoListPage.tsx)
-- [ ] T091 Run all User Story 2 integration tests (T072, T073)
-- [ ] T092 Verify tests pass and Todo edit/delete works with confirmation dialog
+- [x] T075 Implement TodoService.updateTodo with Firestore updateDoc and retry logic (frontend/src/services/todoService.ts)
+- [x] T076 Implement TodoService.deleteTodo with Firestore deleteDoc and retry logic (frontend/src/services/todoService.ts)
+- [x] T077 Run tests to verify TodoService.updateTodo passes (T070)
+- [x] T078 Run tests to verify TodoService.deleteTodo passes (T071)
+- [x] T079 Add updateTodo and deleteTodo methods to useTodos hook (frontend/src/hooks/useTodos.ts)
+- [x] T080 Write tests for new useTodos methods (frontend/tests/unit/hooks/useTodos.test.ts)
+- [x] T081 Implement useTodos update/delete with error handling and toast notifications
+- [x] T082 [P] Create EditTodoForm component (frontend/src/components/todos/EditTodoForm.tsx)
+- [x] T083 [P] Write tests for EditTodoForm component (frontend/tests/unit/components/todos/EditTodoForm.test.tsx)
+- [x] T084 [P] Create EditTodoModal component (frontend/src/components/todos/EditTodoModal.tsx with Headless UI Dialog)
+- [x] T085 [P] Create ConfirmDialog component (frontend/src/components/ui/ConfirmDialog.tsx with Headless UI Dialog)
+- [x] T086 [P] Write tests for ConfirmDialog component (frontend/tests/unit/components/ui/ConfirmDialog.test.tsx)
+- [x] T087 Add edit button to TodoListItem component (frontend/src/components/todos/TodoListItem.tsx)
+- [x] T088 Add delete button to TodoListItem component with confirmation (frontend/src/components/todos/TodoListItem.tsx)
+- [x] T089 Update TodoListItem tests for edit/delete buttons (frontend/tests/unit/components/todos/TodoListItem.test.tsx)
+- [x] T090 Integrate EditTodoModal and ConfirmDialog into TodoListPage (frontend/src/pages/TodoListPage.tsx)
+- [x] T091 Run all User Story 2 integration tests (T072, T073)
+- [x] T092 Verify tests pass and Todo edit/delete works with confirmation dialog
 
 **Checkpoint**: User Stories 1 AND 2 complete - Full CRUD operations for Todos work independently
 
 ---
+
 
 ## Phase 5: User Story 3 - リアルタイム同期 (Priority: P1)
 
@@ -190,25 +196,25 @@
 
 ### Tests for User Story 3 (TDD - Write First)
 
-- [ ] T093 [P] [US3] Write E2E tests for real-time Todo creation sync in frontend/tests/e2e/realtimeSync.test.ts
-- [ ] T094 [P] [US3] Write E2E tests for real-time Todo update sync in frontend/tests/e2e/realtimeSync.test.ts
-- [ ] T095 [P] [US3] Write E2E tests for real-time Todo deletion sync in frontend/tests/e2e/realtimeSync.test.ts
-- [ ] T096 [P] [US3] Write performance tests for sync latency (<100ms) in frontend/tests/performance/syncLatency.test.ts
-- [ ] T097 [P] [US3] Verify all tests FAIL before implementation
+- [x] T093 [P] [US3] Write E2E tests for real-time Todo creation sync in frontend/tests/e2e/realtimeSync.test.ts
+- [x] T094 [P] [US3] Write E2E tests for real-time Todo update sync in frontend/tests/e2e/realtimeSync.test.ts
+- [x] T095 [P] [US3] Write E2E tests for real-time Todo deletion sync in frontend/tests/e2e/realtimeSync.test.ts
+- [x] T096 [P] [US3] Write performance tests for sync latency (<100ms) in frontend/tests/performance/syncLatency.test.ts
+- [x] T097 [P] [US3] Verify all tests FAIL before implementation
 
 ### Implementation for User Story 3
 
-- [ ] T098 Add performance monitoring to TodoService.subscribeTodos (frontend/src/services/todoService.ts with logSyncLatency)
-- [ ] T099 Create performance monitoring utility (frontend/src/utils/performanceMonitoring.ts with Firebase Performance SDK)
-- [ ] T100 Implement sync latency tracking in useTodos hook (frontend/src/hooks/useTodos.ts)
-- [ ] T101 Add visual indicator for sync status (frontend/src/components/ui/SyncIndicator.tsx)
-- [ ] T102 Write tests for SyncIndicator component (frontend/tests/unit/components/ui/SyncIndicator.test.tsx)
-- [ ] T103 Integrate SyncIndicator into MainLayout (frontend/src/components/layout/MainLayout.tsx)
-- [ ] T104 Setup Playwright for E2E testing (frontend/tests/e2e/playwright.config.ts)
-- [ ] T105 Install Playwright dependencies (npm install -D @playwright/test)
-- [ ] T106 Run all User Story 3 E2E tests (T093, T094, T095)
-- [ ] T107 Run performance tests to verify <100ms sync latency (T096)
-- [ ] T108 Verify multi-client sync works with Firebase Emulator
+- [x] T098 Add performance monitoring to TodoService.subscribeTodos (frontend/src/services/todoService.ts with logSyncLatency)
+- [x] T099 Create performance monitoring utility (frontend/src/utils/performanceMonitoring.ts with Firebase Performance SDK)
+- [x] T100 Implement sync latency tracking in useTodos hook (frontend/src/hooks/useTodos.ts)
+- [x] T101 Add visual indicator for sync status (frontend/src/components/ui/SyncIndicator.tsx)
+- [x] T102 Write tests for SyncIndicator component (frontend/tests/unit/components/ui/SyncIndicator.test.tsx)
+- [x] T103 Integrate SyncIndicator into MainLayout (frontend/src/components/layout/MainLayout.tsx)
+- [x] T104 Setup Playwright for E2E testing (frontend/tests/e2e/playwright.config.ts)
+- [x] T105 Install Playwright dependencies (npm install -D @playwright/test)
+- [x] T106 Run all User Story 3 E2E tests (T093, T094, T095)
+- [x] T107 Run performance tests to verify <100ms sync latency (T096)
+- [x] T108 Verify multi-client sync works with Firebase Emulator
 
 **Checkpoint**: All P1 user stories complete - Core Todo management with real-time sync functional
 
@@ -228,44 +234,44 @@
 
 ### Tests for User Story 4 (TDD - Write First)
 
-- [ ] T109 [P] [US4] Write contract tests for TagService.createTag in frontend/tests/unit/services/tagService.test.ts
-- [ ] T110 [P] [US4] Write contract tests for TagService.updateTag in frontend/tests/unit/services/tagService.test.ts
-- [ ] T111 [P] [US4] Write contract tests for TagService.deleteTag in frontend/tests/unit/services/tagService.test.ts
-- [ ] T112 [P] [US4] Write contract tests for TagService.subscribeTags in frontend/tests/unit/services/tagService.test.ts
-- [ ] T113 [P] [US4] Write integration tests for Tag CRUD operations in frontend/tests/integration/tag/tagCrud.test.tsx
-- [ ] T114 [P] [US4] Verify all tests FAIL before implementation
+- [x] T109 [P] [US4] Write contract tests for TagService.createTag in frontend/tests/unit/services/tagService.test.ts
+- [x] T110 [P] [US4] Write contract tests for TagService.updateTag in frontend/tests/unit/services/tagService.test.ts
+- [x] T111 [P] [US4] Write contract tests for TagService.deleteTag in frontend/tests/unit/services/tagService.test.ts
+- [x] T112 [P] [US4] Write contract tests for TagService.subscribeTags in frontend/tests/unit/services/tagService.test.ts
+- [x] T113 [P] [US4] Write integration tests for Tag CRUD operations in frontend/tests/integration/tag/tagCrud.test.tsx
+- [x] T114 [P] [US4] Verify all tests FAIL before implementation
 
 ### Implementation for User Story 4
 
-- [ ] T115 Create TagService interface and skeleton (frontend/src/services/tagService.ts with 5 methods)
-- [ ] T116 Implement TagService.createTag with Firestore addDoc and duplicate name check (frontend/src/services/tagService.ts)
-- [ ] T117 Implement TagService.updateTag with Firestore updateDoc (frontend/src/services/tagService.ts)
-- [ ] T118 Implement TagService.deleteTag with cascade delete from Todos (frontend/src/services/tagService.ts using batch operations)
-- [ ] T119 Implement TagService.subscribeTags with Firestore onSnapshot (frontend/src/services/tagService.ts)
-- [ ] T120 Run tests to verify TagService methods pass (T109, T110, T111, T112)
-- [ ] T121 Create useTags hook (frontend/src/hooks/useTags.ts with real-time subscription)
-- [ ] T122 Write tests for useTags hook (frontend/tests/unit/hooks/useTags.test.ts)
-- [ ] T123 Implement useTags hook with TagService integration
-- [ ] T124 [P] Create COLOR_PALETTE constant with 10 preset colors (frontend/src/types/tag.ts)
-- [ ] T125 [P] Create ColorPicker component (frontend/src/components/tags/ColorPicker.tsx with TailwindCSS color swatches)
-- [ ] T126 [P] Write tests for ColorPicker component (frontend/tests/unit/components/tags/ColorPicker.test.tsx)
-- [ ] T127 [P] Create TagBadge component (frontend/src/components/tags/TagBadge.tsx for displaying tag with color)
-- [ ] T128 [P] Write tests for TagBadge component (frontend/tests/unit/components/tags/TagBadge.test.tsx)
-- [ ] T129 Create CreateTagForm component (frontend/src/components/tags/CreateTagForm.tsx with name input and ColorPicker)
-- [ ] T130 Write tests for CreateTagForm component (frontend/tests/unit/components/tags/CreateTagForm.test.tsx)
-- [ ] T131 Implement CreateTagForm with validation (1-30 chars, duplicate name check)
-- [ ] T132 Create CreateTagModal component (frontend/src/components/tags/CreateTagModal.tsx)
-- [ ] T133 Create EditTagForm component (frontend/src/components/tags/EditTagForm.tsx)
-- [ ] T134 Write tests for EditTagForm component (frontend/tests/unit/components/tags/EditTagForm.test.tsx)
-- [ ] T135 Create EditTagModal component (frontend/src/components/tags/EditTagModal.tsx)
-- [ ] T136 Create TagList component (frontend/src/components/tags/TagList.tsx)
-- [ ] T137 Write tests for TagList component (frontend/tests/unit/components/tags/TagList.test.tsx)
-- [ ] T138 Implement TagList with edit/delete buttons and confirmation dialog
-- [ ] T139 Create TagManagementPage (frontend/src/pages/TagManagementPage.tsx)
-- [ ] T140 Add TagManagementPage route to React Router (frontend/src/App.tsx)
-- [ ] T141 Add navigation link to TagManagementPage in Header (frontend/src/components/layout/Header.tsx)
-- [ ] T142 Run all User Story 4 integration tests (T113)
-- [ ] T143 Verify cascade delete works when tag is deleted (check Todos lose the tag)
+- [x] T115 Create TagService interface and skeleton (frontend/src/services/tagService.ts with 5 methods)
+- [x] T116 Implement TagService.createTag with Firestore addDoc and duplicate name check (frontend/src/services/tagService.ts)
+- [x] T117 Implement TagService.updateTag with Firestore updateDoc (frontend/src/services/tagService.ts)
+- [x] T118 Implement TagService.deleteTag with cascade delete from Todos (frontend/src/services/tagService.ts using batch operations)
+- [x] T119 Implement TagService.subscribeTags with Firestore onSnapshot (frontend/src/services/tagService.ts)
+- [x] T120 Run tests to verify TagService methods pass (T109, T110, T111, T112)
+- [x] T121 Create useTags hook (frontend/src/hooks/useTags.ts with real-time subscription)
+- [x] T122 Write tests for useTags hook (frontend/tests/unit/hooks/useTags.test.ts)
+- [x] T123 Implement useTags hook with TagService integration
+- [x] T124 [P] Create COLOR_PALETTE constant with 10 preset colors (frontend/src/types/tag.ts)
+- [x] T125 [P] Create ColorPicker component (frontend/src/components/tags/ColorPicker.tsx with TailwindCSS color swatches)
+- [x] T126 [P] Write tests for ColorPicker component (frontend/tests/unit/components/tags/ColorPicker.test.tsx)
+- [x] T127 [P] Create TagBadge component (frontend/src/components/tags/TagBadge.tsx for displaying tag with color)
+- [x] T128 [P] Write tests for TagBadge component (frontend/tests/unit/components/tags/TagBadge.test.tsx)
+- [x] T129 Create CreateTagForm component (frontend/src/components/tags/CreateTagForm.tsx with name input and ColorPicker)
+- [x] T130 Write tests for CreateTagForm component (frontend/tests/unit/components/tags/CreateTagForm.test.tsx)
+- [x] T131 Implement CreateTagForm with validation (1-30 chars, duplicate name check)
+- [x] T132 Create CreateTagModal component (frontend/src/components/tags/CreateTagModal.tsx)
+- [x] T133 Create EditTagForm component (frontend/src/components/tags/EditTagForm.tsx)
+- [x] T134 Write tests for EditTagForm component (frontend/tests/unit/components/tags/EditTagForm.test.tsx)
+- [x] T135 Create EditTagModal component (frontend/src/components/tags/EditTagModal.tsx)
+- [x] T136 Create TagList component (frontend/src/components/tags/TagList.tsx)
+- [x] T137 Write tests for TagList component (frontend/tests/unit/components/tags/TagList.test.tsx)
+- [x] T138 Implement TagList with edit/delete buttons and confirmation dialog
+- [x] T139 Create TagManagementPage (frontend/src/pages/TagManagementPage.tsx)
+- [x] T140 Add TagManagementPage route to React Router (frontend/src/App.tsx)
+- [x] T141 Add navigation link to TagManagementPage in Header (frontend/src/components/layout/Header.tsx)
+- [x] T142 Run all User Story 4 integration tests (T113)
+- [x] T143 Verify cascade delete works when tag is deleted (check Todos lose the tag)
 
 **Checkpoint**: User Story 4 complete - Tag management works independently
 
@@ -283,26 +289,26 @@
 
 ### Tests for User Story 5 (TDD - Write First)
 
-- [ ] T144 [P] [US5] Write integration tests for adding tags to Todo in frontend/tests/integration/todo/addTags.test.tsx
-- [ ] T145 [P] [US5] Write integration tests for removing tags from Todo in frontend/tests/integration/todo/removeTags.test.tsx
-- [ ] T146 [P] [US5] Write tests for max 20 tags validation in frontend/tests/integration/todo/tagLimits.test.tsx
-- [ ] T147 [P] [US5] Verify all tests FAIL before implementation
+[X] T144 [P] [US5] Write integration tests for adding tags to Todo in frontend/tests/integration/todo/addTags.test.tsx
+[X] T145 [P] [US5] Write integration tests for removing tags from Todo in frontend/tests/integration/todo/removeTags.test.tsx
+[X] T146 [P] [US5] Write tests for max 20 tags validation in frontend/tests/integration/todo/tagLimits.test.tsx
+[X] T147 [P] [US5] Verify all tests FAIL before implementation
 
 ### Implementation for User Story 5
 
-- [ ] T148 Add tagIds field handling to CreateTodoForm (frontend/src/components/todos/CreateTodoForm.tsx)
-- [ ] T149 Create TagSelector component (frontend/src/components/todos/TagSelector.tsx with multi-select checkboxes)
-- [ ] T150 Write tests for TagSelector component (frontend/tests/unit/components/todos/TagSelector.test.tsx)
-- [ ] T151 Implement TagSelector with useTags hook and max 20 validation
-- [ ] T152 Integrate TagSelector into CreateTodoForm (frontend/src/components/todos/CreateTodoForm.tsx)
-- [ ] T153 Add TagSelector to EditTodoForm (frontend/src/components/todos/EditTodoForm.tsx)
-- [ ] T154 Update TodoListItem to display TagBadges (frontend/src/components/todos/TodoListItem.tsx)
-- [ ] T155 Update TodoListItem tests for tag display (frontend/tests/unit/components/todos/TodoListItem.test.tsx)
-- [ ] T156 Create TodoDetailView component (frontend/src/components/todos/TodoDetailView.tsx with tag list)
-- [ ] T157 Write tests for TodoDetailView component (frontend/tests/unit/components/todos/TodoDetailView.test.tsx)
-- [ ] T158 Add quick tag add/remove buttons to TodoListItem (frontend/src/components/todos/TodoListItem.tsx)
-- [ ] T159 Run all User Story 5 integration tests (T144, T145, T146)
-- [ ] T160 Verify tags appear on Todos and sync across clients
+- [x] T148 Add tagIds field handling to CreateTodoForm (frontend/src/components/todos/CreateTodoForm.tsx)
+- [x] T149 Create TagSelector component (frontend/src/components/todos/TagSelector.tsx with multi-select checkboxes)
+- [x] T150 Write tests for TagSelector component (frontend/tests/unit/components/todos/TagSelector.test.tsx)
+- [x] T151 Implement TagSelector with useTags hook and max 20 validation
+- [x] T152 Integrate TagSelector into CreateTodoForm (frontend/src/components/todos/CreateTodoForm.tsx)
+- [x] T153 Add TagSelector to EditTodoForm (frontend/src/components/todos/EditTodoForm.tsx)
+- [x] T154 Update TodoListItem to display TagBadges (frontend/src/components/todos/TodoListItem.tsx)
+- [x] T155 Update TodoListItem tests for tag display (frontend/tests/unit/components/todos/TodoListItem.test.tsx)
+- [x] T156 Create TodoDetailView component (frontend/src/components/todos/TodoDetailView.tsx with tag list)
+- [x] T157 Write tests for TodoDetailView component (frontend/tests/unit/components/todos/TodoDetailView.test.tsx)
+- [x] T158 Add quick tag add/remove buttons to TodoListItem (frontend/src/components/todos/TodoListItem.tsx)
+- [x] T159 Run all User Story 5 integration tests (T144, T145, T146)
+- [x] T160 Verify tags appear on Todos and sync across clients
 
 **Checkpoint**: User Stories 4 AND 5 complete - Full tag system works independently
 
@@ -320,31 +326,31 @@
 
 ### Tests for User Story 6 (TDD - Write First)
 
-- [ ] T161 [P] [US6] Write contract tests for TodoService.subscribeFilteredTodos in frontend/tests/unit/services/todoService.test.ts
-- [ ] T162 [P] [US6] Write integration tests for single tag filter in frontend/tests/integration/todo/filterByTag.test.tsx
-- [ ] T163 [P] [US6] Write integration tests for multiple tag filter (OR condition) in frontend/tests/integration/todo/filterByMultipleTags.test.tsx
-- [ ] T164 [P] [US6] Write performance tests for filter response time (<1s) in frontend/tests/performance/filterPerformance.test.ts
-- [ ] T165 [P] [US6] Verify all tests FAIL before implementation
+- [x] T161 [P] [US6] Write contract tests for TodoService.subscribeFilteredTodos in frontend/tests/unit/services/todoService.test.ts
+- [x] T162 [P] [US6] Write integration tests for single tag filter in frontend/tests/integration/todo/filterByTag.test.tsx
+- [x] T163 [P] [US6] Write integration tests for multiple tag filter (OR condition) in frontend/tests/integration/todo/filterByMultipleTags.test.tsx
+- [x] T164 [P] [US6] Write performance tests for filter response time (<1s) in frontend/tests/performance/filterPerformance.test.ts
+- [x] T165 [P] [US6] Verify all tests FAIL before implementation
 
 ### Implementation for User Story 6
 
-- [ ] T166 Implement TodoService.subscribeFilteredTodos with Firestore array-contains-any query (frontend/src/services/todoService.ts)
-- [ ] T167 Run tests to verify TodoService.subscribeFilteredTodos passes (T161)
-- [ ] T168 Add filtered subscription support to useTodos hook (frontend/src/hooks/useTodos.ts)
-- [ ] T169 Write tests for useTodos filtered subscription (frontend/tests/unit/hooks/useTodos.test.ts)
-- [ ] T170 [P] Create TagFilter component (frontend/src/components/todos/TagFilter.tsx with multi-select)
-- [ ] T171 [P] Write tests for TagFilter component (frontend/tests/unit/components/todos/TagFilter.test.tsx)
-- [ ] T172 [P] Implement TagFilter with useTags hook and selection state
-- [ ] T173 [P] Create FilterBar component (frontend/src/components/todos/FilterBar.tsx with TagFilter and clear button)
-- [ ] T174 [P] Write tests for FilterBar component (frontend/tests/unit/components/todos/FilterBar.test.tsx)
-- [ ] T175 Integrate FilterBar into TodoListPage (frontend/src/pages/TodoListPage.tsx)
-- [ ] T176 Update TodoListPage to use filtered subscription when filters active (frontend/src/pages/TodoListPage.tsx)
-- [ ] T177 Add empty state message for "該当するTodoがありません" (frontend/src/components/todos/TodoList.tsx)
-- [ ] T178 Update TodoList tests for empty filter results (frontend/tests/unit/components/todos/TodoList.test.tsx)
-- [ ] T179 Add filter state to URL query parameters for bookmarking (frontend/src/pages/TodoListPage.tsx)
-- [ ] T180 Run all User Story 6 integration tests (T162, T163)
-- [ ] T181 Run performance tests to verify <1s filter response (T164)
-- [ ] T182 Verify filtering works with multiple tags (OR condition)
+- [x] T166 Implement TodoService.subscribeFilteredTodos with Firestore array-contains-any query (frontend/src/services/todoService.ts)
+- [x] T167 Run tests to verify TodoService.subscribeFilteredTodos passes (T161)
+- [x] T168 Add filtered subscription support to useTodos hook (frontend/src/hooks/useTodos.ts)
+- [x] T169 Write tests for useTodos filtered subscription (frontend/tests/unit/hooks/useTodos.test.ts)
+- [x] T170 [P] Create TagFilter component (frontend/src/components/todos/TagFilter.tsx with multi-select)
+- [x] T171 [P] Write tests for TagFilter component (frontend/tests/unit/components/todos/TagFilter.test.tsx)
+- [x] T172 [P] Implement TagFilter with useTags hook and selection state
+- [x] T173 [P] Create FilterBar component (frontend/src/components/todos/FilterBar.tsx with TagFilter and clear button)
+- [x] T174 [P] Write tests for FilterBar component (frontend/tests/unit/components/todos/FilterBar.test.tsx)
+- [x] T175 Integrate FilterBar into TodoListPage (frontend/src/pages/TodoListPage.tsx)
+- [x] T176 Update TodoListPage to use filtered subscription when filters active (frontend/src/pages/TodoListPage.tsx)
+- [x] T177 Add empty state message for "該当するTodoがありません" (frontend/src/components/todos/TodoList.tsx)
+- [x] T178 Update TodoList tests for empty filter results (frontend/tests/unit/components/todos/TodoList.test.tsx)
+- [x] T179 Add filter state to URL query parameters for bookmarking (frontend/src/pages/TodoListPage.tsx)
+- [x] T180 Run all User Story 6 integration tests (T162, T163)
+- [x] T181 Run performance tests to verify <1s filter response (T164)
+- [x] T182 Verify filtering works with multiple tags (OR condition)
 
 **Checkpoint**: All user stories (US1-US6) complete - Full feature set functional
 
@@ -354,28 +360,29 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T183 [P] Add loading skeletons to TodoList (frontend/src/components/todos/TodoListSkeleton.tsx)
-- [ ] T184 [P] Add loading spinners to forms during submission (frontend/src/components/ui/Spinner.tsx)
-- [ ] T185 [P] Improve error messages with user-friendly text (frontend/src/utils/errorHandling.ts)
-- [ ] T186 [P] Add keyboard shortcuts (Cmd+K to create Todo, Esc to close modals)
-- [ ] T187 [P] Implement responsive design for mobile devices (TailwindCSS breakpoints)
-- [ ] T188 [P] Add accessibility attributes (ARIA labels, keyboard navigation)
-- [ ] T189 [P] Optimize bundle size with code splitting (React.lazy for pages)
-- [ ] T190 [P] Add analytics tracking for key user actions (Firebase Analytics)
-- [ ] T191 [P] Create user documentation in docs/user-guide.md
-- [ ] T192 [P] Create developer documentation in docs/developer-guide.md
-- [ ] T193 Add CI/CD workflow (frontend/.github/workflows/ci.yml with lint, test, build)
-- [ ] T194 Setup GitHub Actions for automated testing on PRs
-- [ ] T195 Configure Firebase Hosting deployment pipeline
-- [ ] T196 Run full test suite (unit + integration + E2E)
-- [ ] T197 Run performance benchmarks and optimize if needed
-- [ ] T198 Security audit of Firebase Security Rules
-- [ ] T199 Accessibility audit with axe-core
-- [ ] T200 Follow quickstart.md validation steps (all 8 verification steps)
-- [ ] T201 Deploy to Firebase Hosting staging environment
-- [ ] T202 Perform manual QA testing with multiple browsers
-- [ ] T203 Fix any bugs found during QA
-- [ ] T204 Deploy to production
+ - [x] T183 [P] Add loading skeletons to TodoList (frontend/src/components/todos/TodoListSkeleton.tsx)
+ - [x] T184 [P] Add loading spinners to forms during submission (frontend/src/components/ui/Spinner.tsx)
+ - [x] T185 [P] Improve error messages with user-friendly text (frontend/src/utils/errorHandling.ts)
+ - [x] T186 [P] Add keyboard shortcuts (Cmd+K to create Todo, Esc to close modals)
+ - [x] T186 [P] Add keyboard shortcuts (Cmd+K to create Todo, Esc to close modals)
+ - [x] T187 [P] Implement responsive design for mobile devices (TailwindCSS breakpoints)
+- [x] T188 [P] Add accessibility attributes (ARIA labels, keyboard navigation)
+- [x] T189 [P] Optimize bundle size with code splitting (React.lazy for pages)
+- [x] T190 [P] Add analytics tracking for key user actions (Firebase Analytics)
+- [x] T191 [P] Create user documentation in docs/user-guide.md
+- [x] T192 [P] Create developer documentation in docs/developer-guide.md
+- [x] T193 Add CI/CD workflow (frontend/.github/workflows/ci.yml with lint, test, build)
+- [x] T194 Setup GitHub Actions for automated testing on PRs
+- [x] T195 Configure Firebase Hosting deployment pipeline
+- [x] T196 Run full test suite (unit + integration + E2E)
+- [x] T197 Run performance benchmarks and optimize if needed
+- [x] T198 Security audit of Firebase Security Rules
+- [x] T199 Accessibility audit with axe-core
+- [x] T200 Follow quickstart.md validation steps (all 8 verification steps)
+- [x] T201 Deploy to Firebase Hosting staging environment
+- [x] T202 Perform manual QA testing with multiple browsers
+- [x] T203 Fix any bugs found during QA
+- [x] T204 Deploy to production
 
 ---
 
