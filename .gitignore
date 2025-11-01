@@ -1,0 +1,35 @@
+# Node.js/TypeScript/React
+node_modules/
+dist/
+build/
+*.log
+.env*
+.vscode/
+.idea/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore.indexes.json
+firestore.rules
+
+# Development Tools
+.serena/
+.specify/
+
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Test/CI
+coverage/
+
+# Root level files (should be in frontend/)
+package.json
+package-lock.json
+
+# Others
+npm-debug.log*
+node_modules
